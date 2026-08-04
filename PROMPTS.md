@@ -82,3 +82,73 @@ Tasks:
 - Search input appears correctly ✔
 - No TypeScript errors ✔
 - No API calls added ✔
+### Notes
+After testing the UI, the SearchBar styling was adjusted to:
+- Fix the input width.
+- Center the search bar correctly.
+- Improve the placeholder appearance.
+- Keep the component reusable and responsive.
+
+Implement Step 3 only.
+
+Goal:
+Create a reusable MovieCard UI component.
+
+Tasks:
+- Create a MovieCard component.
+- Display:
+  - Movie poster placeholder
+  - Movie title
+  - Release year
+  - Movie type
+- Use static placeholder data only.
+- Do not connect to OMDb API.
+- Do not implement search functionality.
+- Keep the component reusable.
+- Maintain the existing layout.
+
+# Step 3 – MovieCard UI
+
+## Goal
+Create a reusable MovieCard component to display movie information without connecting to the API.
+
+## AI Prompt
+Implement Step 3 only.
+
+Tasks:
+- Create a reusable MovieCard component.
+- Display:
+  - Poster
+  - Title
+  - Year
+  - Type
+- Keep the component presentational only.
+- Do not connect to OMDb API.
+- Use static sample movie data.
+- Add responsive styling.
+
+## Result
+- Created reusable MovieCard component.
+- Displayed sample movie information.
+- Added responsive card styling.
+- Added hover animation.
+- Used external poster image for preview.
+
+## Files Modified
+- src/components/movieCard/MovieCard.tsx
+- src/App.tsx
+- src/App.css
+
+## Verification
+- Movie card renders successfully ✔
+- Poster image displays correctly ✔
+- Responsive styling works ✔
+- Hover effect works ✔
+- No API calls added ✔
+
+## Notes
+The AI assistant was used to:
+- Design the reusable MovieCard component.
+- Improve component styling.
+- Refine responsive layout.
+- Review the UI before moving to API integration.

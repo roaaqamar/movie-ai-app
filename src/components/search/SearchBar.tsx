@@ -1,22 +1,18 @@
 type SearchBarProps = {
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
-};
-
-function SearchBar({
-  searchTerm,
-  onSearchChange,
-}: SearchBarProps) {
-  return (
-    <div className="search-bar">
-      <input
-        type="text"
-        placeholder="Search for a movie..."
-        value={searchTerm}
-        onChange={(e) => onSearchChange(e.target.value)}
-      />
-    </div>
-  );
+  value: string
+  onChange: (value: string) => void
 }
 
-export default SearchBar;
+function SearchBar({ value, onChange }: SearchBarProps) {
+  return (
+    <input
+      className="search-bar"
+      type="text"
+      placeholder="Search for a movie..."
+      value={value}
+      onChange={(event) => onChange(event.target.value)}
+    />
+  )
+}
+
+export default SearchBar

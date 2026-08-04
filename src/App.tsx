@@ -1,10 +1,11 @@
-import { useState } from "react";
-import "./App.css";
-import Header from "./components/Header";
-import SearchBar from "./components/search/SearchBar";
+import { useState } from 'react'
+import Header from './components/Header'
+import SearchBar from './components/search/SearchBar'
+import MovieCard from './components/movieCard/MovieCard'
+import './App.css'
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="app">
@@ -12,16 +13,19 @@ function App() {
 
       <main className="main">
         <SearchBar
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
+          value={searchTerm}
+          onChange={setSearchTerm}
         />
 
-        <p className="main__placeholder">
-          Search for movies — coming in the next step.
-        </p>
+        <MovieCard
+  title="Inception"
+  year="2010"
+  type="Movie"
+  poster="https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg"
+/>
       </main>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
