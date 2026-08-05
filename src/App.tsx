@@ -7,13 +7,19 @@ import './App.css'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
+  const [movies, setMovies] = useState<any[]>([])
 
   const handleSearch = async () => {
   if (!searchTerm.trim()) return
 
   try {
     const data = await searchMovies(searchTerm)
-    console.log(data)
+
+if (data.Response === 'True') {
+  setMovies(data.Search)
+} else {
+  setMovies([])
+}
   } catch (error) {
     console.error(error)
   }
@@ -30,12 +36,17 @@ function App() {
   onSearch={handleSearch}
 />
 
-        <MovieCard
-  title="Inception"
-  year="2010"
-  type="Movie"
-  poster="https://m.media-amazon.com/images/I/81p+xe8cbnL._AC_SY679_.jpg"
-/>
+       <div className="movies-grid">
+ {movies.map((movie) => (
+  <MovieCard
+    key={movie.imdbID}
+    title={movie.Title}
+    year={movie.Year}
+    type={movie.Type}
+    poster={movie.Poster}
+  />
+))}
+</div>
       </main>
     </div>
   )

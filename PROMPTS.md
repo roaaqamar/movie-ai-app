@@ -229,3 +229,44 @@ The AI assistant was used to:
 - Implement API requests.
 - Improve the search experience.
 - Verify successful communication with OMDb.
+
+# Step 6 – Search Movies from OMDb API
+
+## Goal
+Connect the application to the OMDb API and display search results dynamically.
+
+## AI Prompt
+Implement Step 6 only.
+
+Tasks:
+- Connect the Search button to the OMDb API.
+- Search movies using the user input.
+- Display search results dynamically.
+- Render one MovieCard for each returned movie.
+- Do not implement loading or error handling yet.
+
+## Result
+- Connected the search functionality to the OMDb API.
+- Search button now sends requests successfully.
+- Movies are displayed dynamically using map().
+- Replaced the static MovieCard with dynamic movie results.
+
+## Files Modified
+- src/App.tsx
+- src/services/omdbMovieService.ts
+- src/App.css
+
+## Verification
+- Search request works successfully ✔
+- API returns movie results ✔
+- Movies display dynamically ✔
+- No TypeScript errors ✔
+
+## Notes
+The AI assistant was used to:
+- Plan the search flow.
+- Build the service layer.
+- Connect React state with the OMDb API.
+- Render dynamic movie cards using map().
+
+All generated code was reviewed, tested, and approved before being committed.
