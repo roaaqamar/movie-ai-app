@@ -188,3 +188,44 @@ The AI assistant was used to:
 - Design the service layer.
 - Organize API logic.
 - Keep the project modular and scalable.
+
+# Step 5 – Connect SearchBar to OMDb API
+
+## Goal
+Connect the SearchBar to the OMDb API and trigger movie searches.
+
+## AI Prompt
+Implement Step 5 only.
+
+Tasks:
+- Connect SearchBar to the OMDb service.
+- Add a Search button.
+- Support searching with the Enter key.
+- Print API results in the console.
+- Keep MovieCard static for now.
+- Do not display search results yet.
+
+## Result
+- Connected SearchBar to the OMDb API.
+- Added Search button.
+- Added Enter key support.
+- Successfully fetched movie data.
+- Verified API communication through the browser console.
+
+## Files Modified
+- src/App.tsx
+- src/App.css
+- src/components/search/SearchBar.tsx
+
+## Verification
+- Search button works ✔
+- Enter key works ✔
+- OMDb API returns movie data ✔
+- No TypeScript errors ✔
+
+## Notes
+The AI assistant was used to:
+- Connect the UI with the service layer.
+- Implement API requests.
+- Improve the search experience.
+- Verify successful communication with OMDb.
