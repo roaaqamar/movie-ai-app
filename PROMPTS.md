@@ -152,3 +152,39 @@ The AI assistant was used to:
 - Improve component styling.
 - Refine responsive layout.
 - Review the UI before moving to API integration.
+
+# Step 4 – OMDb Service Layer
+
+## Goal
+Prepare the OMDb API service layer before connecting the UI.
+
+## AI Prompt
+Implement Step 4 only.
+
+Tasks:
+- Create the services folder.
+- Create omdbMovieService.ts.
+- Read the API key from .env.
+- Create a reusable searchMovies() function.
+- Do not connect the UI yet.
+
+## Result
+- Created reusable OMDb service.
+- Added environment variable support.
+- Created reusable search function.
+- Separated API logic from UI.
+
+## Files Modified
+- src/services/omdbMovieService.ts
+- .env
+
+## Verification
+- API service created ✔
+- Environment variables configured ✔
+- No TypeScript errors ✔
+
+## Notes
+The AI assistant was used to:
+- Design the service layer.
+- Organize API logic.
+- Keep the project modular and scalable.
