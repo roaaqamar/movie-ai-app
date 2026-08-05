@@ -270,3 +270,41 @@ The AI assistant was used to:
 - Render dynamic movie cards using map().
 
 All generated code was reviewed, tested, and approved before being committed.
+# Step 7 – Loading, Error and Empty States
+
+## Goal
+Improve the user experience by handling loading, errors, and empty search results.
+
+## AI Prompt
+Implement Step 7 only.
+
+Tasks:
+- Add loading state.
+- Add error state.
+- Show an empty message before searching.
+- Display a loading message while fetching data.
+- Display an error message when no movies are found.
+- Do not change the movie card layout.
+
+## Result
+- Added loading state.
+- Added error handling.
+- Added empty search message.
+- Improved user experience.
+- Search flow is now complete.
+
+## Files Modified
+- src/App.tsx
+- src/App.css
+
+## Verification
+- Loading message appears ✔
+- Error message appears ✔
+- Empty state appears ✔
+- Search results still display correctly ✔
+
+## Notes
+The AI assistant was used to:
+- Improve application state management.
+- Implement conditional rendering.
+- Enhance the overall user experience.
