@@ -344,3 +344,26 @@ When the user searches for a movie, such as **Batman**, and clicks on **Batman B
 ```bash
 git commit -m "Step 8: Movie details modal"
 ```
+## Step 9: Organize Movie Types
+
+In this step, I improved the project structure by separating the movie-related TypeScript types from the main application component.
+
+### What was implemented:
+
+* Created a new `types` folder inside `src`.
+* Created `movie.ts` to store the movie data types.
+* Added a `Movie` type for movie search results.
+* Added a `MovieDetails` type for detailed movie information.
+* Updated `App.tsx` to import the `Movie` type instead of defining it inside the component.
+* Kept the existing search and movie details functionality working without changing the user experience.
+
+### Result:
+
+The project now has a cleaner and more maintainable TypeScript structure. Movie-related types are stored in one dedicated location, making them easier to reuse across components and services.
+
+### Git Commit:
+
+```bash
+git add .
+git commit -m "Step 9: Organize movie types"
+```

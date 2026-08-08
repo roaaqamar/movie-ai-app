@@ -3,16 +3,10 @@ import Header from './components/Header'
 import SearchBar from './components/search/SearchBar'
 import MovieCard from './components/movieCard/MovieCard'
 import MovieModal from './components/movieModal/MovieModal'
+import type { Movie } from './types/movie'
 import { searchMovies } from './services/omdbMovieService'
 import './App.css'
 
-type Movie = {
-  imdbID: string
-  Title: string
-  Year: string
-  Type: string
-  Poster: string
-}
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
