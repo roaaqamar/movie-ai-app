@@ -18,9 +18,24 @@ const searchMovies = async (query: string) => {
   return data
 }
 
+const getMovieDetails = async (imdbID: string) => {
+  const response = await fetch(
+    `${BASE_URL}?apikey=${API_KEY}&i=${imdbID}&plot=full`
+  )
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch movie details.')
+  }
+
+  const data = await response.json()
+
+  return data
+}
+
 export {
   API_KEY,
   BASE_URL,
   buildSearchUrl,
   searchMovies,
+  getMovieDetails,
 }

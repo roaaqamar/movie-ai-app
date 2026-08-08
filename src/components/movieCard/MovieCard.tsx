@@ -3,11 +3,22 @@ type MovieCardProps = {
   year: string
   type: string
   poster: string
+  onClick: () => void
 }
 
-function MovieCard({ title, year, type, poster }: MovieCardProps) {
+function MovieCard({
+  title,
+  year,
+  type,
+  poster,
+  onClick,
+}: MovieCardProps) {
   return (
-    <article className="movie-card">
+    <button
+      type="button"
+      className="movie-card"
+      onClick={onClick}
+    >
       <img
         className="movie-card__poster"
         src={poster}
@@ -21,7 +32,7 @@ function MovieCard({ title, year, type, poster }: MovieCardProps) {
           {year} • {type}
         </p>
       </div>
-    </article>
+    </button>
   )
 }
 

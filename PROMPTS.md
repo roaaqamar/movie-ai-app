@@ -308,3 +308,39 @@ The AI assistant was used to:
 - Improve application state management.
 - Implement conditional rendering.
 - Enhance the overall user experience.
+
+## Step 8: Movie Details Modal
+
+In this step, I implemented a movie details modal that opens when the user clicks on a movie card.
+
+### What was implemented:
+
+* Added a clickable `MovieCard` component.
+* Added `selectedMovie` state to track the selected movie.
+* Created a `MovieModal` component.
+* Added `getMovieDetails()` to the OMDb service.
+* Used the movie's `imdbID` to request its full details from the OMDb API.
+* Added `plot=full` to retrieve the full movie plot.
+* Displayed detailed information inside the modal:
+
+  * Movie title
+  * Release year
+  * Runtime
+  * Genre
+  * Director
+  * Actors
+  * IMDb rating
+  * Plot
+* Added loading and error handling while fetching movie details.
+* Added a close button and allowed the modal to close by clicking outside it.
+* Added responsive CSS styling for the modal.
+
+### Result:
+
+When the user searches for a movie, such as **Batman**, and clicks on **Batman Begins**, a modal opens and displays the complete movie information retrieved from the OMDb API.
+
+### Git Commit:
+
+```bash
+git commit -m "Step 8: Movie details modal"
+```
