@@ -221,3 +221,55 @@ grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));  gap: 1.5rem;
     padding-right: 0;
   }
 }
+.movie-card {
+  position: relative;
+}
+
+.movie-card__main {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.movie-card__favorite {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #6b7280;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.2s ease;
+}
+
+.movie-card__favorite:hover {
+  transform: scale(1.1);
+}
+
+.movie-card__favorite.is-favorite {
+  color: #dc2626;
+}
+.favorites-section {
+  width: 100%;
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.favorites-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}

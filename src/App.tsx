@@ -5,8 +5,8 @@ import MovieCard from './components/movieCard/MovieCard'
 import MovieModal from './components/movieModal/MovieModal'
 import type { Movie } from './types/movie'
 import { searchMovies } from './services/omdbMovieService'
+import useFavorites from './hooks/useFavorites'
 import './App.css'
-
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -14,6 +14,12 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null)
+
+  const {
+    favorites,
+    isFavorite,
+    toggleFavorite,
+  } = useFavorites()
 
   const handleSearch = async () => {
     if (!searchTerm.trim()) return
@@ -28,7 +34,7 @@ function App() {
         setMovies(data.Search)
       } else {
         setMovies([])
-        setError(data.Error)
+        setError(data.Error || 'No movies found.')
       }
     } catch (error) {
       console.error(error)
@@ -51,22 +57,22 @@ function App() {
         />
 
         {loading ? (
-          <p className="status-message">Loading...</p>
+          <p className="status-message">
+            Loading...
+          </p>
         ) : error ? (
-          <p className="status-message error">{error}</p>
+          <p className="status-message error">
+            {error}
+          </p>
         ) : movies.length > 0 ? (
           <div className="movies-grid">
             {movies.map((movie) => (
               <MovieCard
                 key={movie.imdbID}
-                title={movie.Title}
-                year={movie.Year}
-                type={movie.Type}
-                poster={movie.Poster}
-                onClick={() => {
-                  console.log('Movie clicked:', movie.Title)
-                  setSelectedMovie(movie)
-                }}
+                movie={movie}
+                isFavorite={isFavorite(movie.imdbID)}
+                onFavoriteClick={() => toggleFavorite(movie)}
+                onClick={() => setSelectedMovie(movie)}
               />
             ))}
           </div>
@@ -82,7 +88,24 @@ function App() {
             onClose={() => setSelectedMovie(null)}
           />
         )}
-      </main>
+
+{favorites.length > 0 && (
+  <section className="favorites-section">
+    <h2 className="favorites-title">My Favorites</h2>
+
+    <div className="movies-grid">
+      {favorites.map((movie) => (
+        <MovieCard
+          key={movie.imdbID}
+          movie={movie}
+          isFavorite={true}
+          onFavoriteClick={() => toggleFavorite(movie)}
+          onClick={() => setSelectedMovie(movie)}
+        />
+      ))}
+    </div>
+  </section>
+)}      </main>
     </div>
   )
 }

@@ -367,3 +367,33 @@ The project now has a cleaner and more maintainable TypeScript structure. Movie-
 git add .
 git commit -m "Step 9: Organize movie types"
 ```
+## Step 10: Favorites Feature
+
+In this step, I added a complete favorites system to the movie application.
+
+### What was implemented:
+
+* Added a reusable `useFavorites` custom Hook.
+* Used `localStorage` to persist favorite movies in the browser.
+* Added a Favorite button to each `MovieCard`.
+* Users can add or remove movies from their favorites.
+* Added visual feedback using `♡` and `♥`.
+* Added a **My Favorites** section to display saved movies.
+* Favorite movies remain available after refreshing the page.
+* Favorite movies can also be opened in the movie details modal.
+* Users can continue searching for other movies while keeping their saved favorites.
+* Added a fallback for movies that do not have an available poster.
+* Removed temporary debugging output from the application.
+
+### Result:
+
+The application now allows users to search for movies, save movies they like, remove them from their favorites, and access their saved movies without losing them after refreshing the page.
+
+The favorites are currently stored locally using the browser's `localStorage`. In the next step, Firebase Authentication will be added so that favorites can eventually be associated with individual user accounts.
+
+### Git Commit:
+
+```bash
+git add .
+git commit -m "Step 10: Add favorites feature"
+```
