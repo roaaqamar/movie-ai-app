@@ -7,6 +7,8 @@ type MovieCardProps = {
   onFavoriteClick: () => void
 }
 
+const FALLBACK_POSTER = '/no-poster.svg'
+
 function MovieCard({
   movie,
   onClick,
@@ -14,9 +16,9 @@ function MovieCard({
   onFavoriteClick,
 }: MovieCardProps) {
   const poster =
-    movie.Poster !== 'N/A'
+    movie.Poster && movie.Poster !== 'N/A'
       ? movie.Poster
-      : 'https://via.placeholder.com/300x450?text=No+Poster'
+      : FALLBACK_POSTER
 
   return (
     <article className="movie-card">
@@ -29,6 +31,11 @@ function MovieCard({
           className="movie-card__poster"
           src={poster}
           alt={movie.Title}
+          onError={(event) => {
+            if (!event.currentTarget.src.includes('no-poster.svg')) {
+              event.currentTarget.src = FALLBACK_POSTER
+            }
+          }}
         />
 
         <div className="movie-card__content">

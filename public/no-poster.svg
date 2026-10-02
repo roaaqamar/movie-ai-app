@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="450" viewBox="0 0 300 450">
+  <rect width="300" height="450" fill="#e5e7eb"/>
+
+  <text
+    x="150"
+    y="215"
+    text-anchor="middle"
+    font-family="Arial"
+    font-size="24"
+    fill="#6b7280"
+  >
+    No Poster
+  </text>
+
+  <text
+    x="150"
+    y="250"
+    text-anchor="middle"
+    font-family="Arial"
+    font-size="18"
+    fill="#9ca3af"
+  >
+    Available
+  </text>
+</svg>

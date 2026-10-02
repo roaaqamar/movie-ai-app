@@ -1,45 +1,90 @@
 import { useEffect, useState } from 'react'
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  setDoc,
+} from 'firebase/firestore'
+
+import { db } from '../firebase'
+import { useAuth } from '../contexts/useAuth'
 import type { Movie } from '../types/movie'
 
-const STORAGE_KEY = 'movie-ai-favorites'
-
 function useFavorites() {
-  const [favorites, setFavorites] = useState<Movie[]>(() => {
-    const savedFavorites = localStorage.getItem(STORAGE_KEY)
+  const { user } = useAuth()
 
-    if (!savedFavorites) {
-      return []
-    }
-
-    try {
-      return JSON.parse(savedFavorites)
-    } catch {
-      return []
-    }
-  })
+  const [favorites, setFavorites] = useState<Movie[]>([])
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites))
-  }, [favorites])
+    if (!user) {
+      return
+    }
+
+    const favoritesRef = collection(
+      db,
+      'users',
+      user.uid,
+      'favorites'
+    )
+
+    const unsubscribe = onSnapshot(
+      favoritesRef,
+      (snapshot) => {
+        const movies = snapshot.docs.map(
+          (favoriteDoc) =>
+            favoriteDoc.data() as Movie
+        )
+
+        setFavorites(movies)
+      },
+      (error) => {
+        console.error(
+          'Error loading favorites:',
+          error
+        )
+
+        setFavorites([])
+      }
+    )
+
+    return unsubscribe
+  }, [user])
 
   const isFavorite = (imdbID: string) => {
-    return favorites.some((movie) => movie.imdbID === imdbID)
+    return favorites.some(
+      (movie) => movie.imdbID === imdbID
+    )
   }
 
-  const toggleFavorite = (movie: Movie) => {
-    setFavorites((currentFavorites) => {
-      const alreadyFavorite = currentFavorites.some(
-        (favorite) => favorite.imdbID === movie.imdbID
+  const toggleFavorite = async (movie: Movie) => {
+    if (!user) {
+      console.warn(
+        'You must be logged in to use favorites.'
       )
+      return
+    }
 
-      if (alreadyFavorite) {
-        return currentFavorites.filter(
-          (favorite) => favorite.imdbID !== movie.imdbID
-        )
+    const favoriteRef = doc(
+      db,
+      'users',
+      user.uid,
+      'favorites',
+      movie.imdbID
+    )
+
+    try {
+      if (isFavorite(movie.imdbID)) {
+        await deleteDoc(favoriteRef)
+      } else {
+        await setDoc(favoriteRef, movie)
       }
-
-      return [...currentFavorites, movie]
-    })
+    } catch (error: unknown) {
+      console.error(
+        'Error updating favorite:',
+        error
+      )
+    }
   }
 
   return {
